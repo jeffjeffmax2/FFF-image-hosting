@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dear FFF</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2937;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .fff-page {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(
+      to bottom,
+      #fdf2f8 0%,
+      #fff7fb 18%,
+      #ffffff 55%,
+      #ffffff 100%
+    );
+    padding: 70px 20px 80px;
+  }
+
+  .fff-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  .fff-header {
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  .heart {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fce7f3;
+    color: #ec4899;
+    font-size: 36px;
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.12);
+  }
+
+  .fff-header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.1;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -1px;
+  }
+
+  .fff-header p {
+    margin: 0 auto;
+    max-width: 700px;
+    font-size: clamp(17px, 2.5vw, 21px);
+    line-height: 1.6;
+    color: #6b7280;
+  }
+
+  /* =========================
+     LETTER LIST
+  ========================= */
+
+  .letters {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  .letter-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow:
+      0 12px 35px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f3f4f6;
+  }
+
+  .letter-title {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #374151;
+    margin: 4px 8px 18px;
+  }
+
+  /* =========================
+     PDF VIEWERS
+     
+     IMPORTANT:
+     These ratios match the actual
+     dimensions in the Wix viewer URLs.
+  ========================= */
+
+  .pdf-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+  }
+
+  /*
+    LETTER 1
+    Wix source: 980 x 2502
+  */
+  .pdf-1 {
+    aspect-ratio: 980 / 2502;
+  }
+
+  /*
+    LETTER 2
+    Wix source: 980 x 1371
+  */
+  .pdf-2 {
+    aspect-ratio: 980 / 1371;
+  }
+
+  /*
+    LETTER 3
+    Wix source: 980 x 2492
+  */
+  .pdf-3 {
+    aspect-ratio: 980 / 2492;
+  }
+
+  /*
+    LETTER 4
+    Wix source: 980 x 1275
+  */
+  .pdf-4 {
+    aspect-ratio: 980 / 1275;
+  }
+
+  /*
+    LETTER 5
+    Wix source: 980 x 1285
+  */
+  .pdf-5 {
+    aspect-ratio: 980 / 1285;
+  }
+
+  /*
+    LETTER 6
+    Wix source: 980 x 1278
+  */
+  .pdf-6 {
+    aspect-ratio: 980 / 1278;
+  }
+
+  .pdf-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #fff;
+  }
+
+  /*
+    A subtle label above PDF documents.
+    Helps visitors understand that these
+    are scanned letters.
+  */
+  .document-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+
+
+  /* =========================
+     IMAGE LETTERS
+  ========================= */
+
+  .image-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+  .image-wrapper img {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+  }
+
+  /* =========================
+     CTA
+  ========================= */
+
+  .cta {
+    margin-top: 70px;
+    padding: 55px 30px;
+    border-radius: 24px;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(
+      135deg,
+      #ec4899 0%,
+      #f97316 100%
+    );
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.20);
+  }
+
+  .cta h2 {
+    margin: 0 0 15px;
+    font-size: clamp(27px, 5vw, 36px);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .cta p {
+    margin: 0 auto 25px;
+    max-width: 650px;
+    font-size: clamp(17px, 2.5vw, 20px);
+    line-height: 1.6;
+  }
+
+  .cta-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 17px;
+  }
+
+  .cta-email {
+    font-weight: 700;
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media (max-width: 700px) {
+
+    .fff-page {
+      padding: 45px 10px 60px;
+    }
+
+    .fff-header {
+      margin-bottom: 38px;
+    }
+
+    .heart {
+      width: 56px;
+      height: 56px;
+      font-size: 29px;
+      margin-bottom: 14px;
+    }
+
+    .letter-card {
+      padding: 10px;
+      border-radius: 16px;
+    }
+
+    .letters {
+      gap: 30px;
+    }
+
+    .letter-title {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .pdf-wrapper {
+      border-radius: 10px;
+    }
+
+    .image-wrapper img {
+      border-radius: 10px;
+    }
+
+    .cta {
+      margin-top: 45px;
+      padding: 40px 20px;
+      border-radius: 18px;
+    }
+  }
+
+  @media (max-width: 400px) {
+
+    .fff-page {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
+    .letter-card {
+      padding: 7px;
+    }
+
+    .letters {
+      gap: 24px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="fff-page">
+
+  <div class="fff-container">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="fff-header">
+
+      
+
+      <h1>Dear FFF </h1>
+
+      <p>
+        Letters from the families and children we've had the honor to serve
+      </p>
+
+    </header>
+
+
+    <!-- =========================
+         LETTERS
+    ========================== -->
+
+    <main class="letters">
+
+
+      <!-- =========================================
+           PDF LETTER 1
+           980 x 2502
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>A Letter to FFF</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-2">
+
+          <iframe
+  srcdoc="
+    <html>
+      <body style='margin:0; padding:0;'>
+        <img
+          src='https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/FFF%20re%20call%20from%20Rob%201993%20U%20of%20MN.JPG'
+          style='width:100%; height:auto; display:block;'
+          alt='Dear FFF Letter 1'
+        />
+      </body>
+    </html>
+  "
+  title="Dear FFF Letter 1"
+  loading="lazy"
+  width="100%"
+  height="600"
+  style="border:none;"
+></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           PDF LETTER 2
+           980 x 1371
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>A Letter to FFF</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-2">
+
+          <iframe
+  srcdoc="
+    <html>
+      <body style='margin:0; padding:0;'>
+        <img
+          src='https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/FFF%20re%20Jodiy%20Sweetin%20calling%20kid%201990.JPG'
+          style='width:100%; height:auto; display:block;'
+          alt='FFF re Jodiy Sweetin calling kid 1990'
+        />
+      </body>
+    </html>
+  "
+  title="Dear FFF Letter 2"
+  loading="lazy"
+  width="100%"
+  height="600"
+  style="border:none;"
+></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           PDF LETTER 3
+           980 x 2492
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>A Letter to FFF</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-2">
+
+          <iframe
+            src="https://wixlabs-pdf-dev.appspot.com/index?pageId=hguya&compId=comp-l54l9rck&viewerCompId=comp-l54l9rck&siteRevision=483&viewMode=site&deviceType=desktop&locale=en&tz=America%2FLos_Angeles&regionalLanguage=en&width=980&height=2492&instance=UE6qAU1d9QQWM0YzdKeCj9QYay_uHh1u4Yc0rgAazrs.eyJpbnN0YW5jZUlkIjoiYjkwNTNhMTktNzMyNy00YmVkLTg0ZTUtODVlMGM2MDA5ZTg0IiwiYXBwRGVmSWQiOiIxM2VlMTBhMy1lY2I5LTdlZmYtNDI5OC1kMmY5ZjM0YWNmMGQiLCJtZXRhU2l0ZUlkIjoiY2Q0ZjM0M2UtYzY4Yy00NWUwLWE1NTYtYzhjMjJmNTFjODM4Iiwic2lnbkRhdGUiOiIyMDI2LTA1LTA2VDE5OjQ3OjE3LjM3NVoiLCJ1aWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwiZGVtb01vZGUiOmZhbHNlLCJhaWQiOiI1MmVjZmU4ZC02MzhkLTQxY2UtYWE0Yy0xOThmZDdmMjI3YWQiLCJiaVRva2VuIjoiNzQ0YTBlMjctYjVhYi0wZTBkLTIxYjMtNGQyMmU5NTE1NmJjIiwic2l0ZU93bmVySWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjYtMDUtMDZUMjM6NDc6MTcuMzc1WiIsImhhc1VzZXJSb2xlIjp0cnVlLCJzaWQiOiJiZjQyNTc4OS01M2YxLTRhY2EtYTczMy0yY2FlMDA1OWMwNzkiLCJzY3QiOiIyMDI2LTA1LTA2VDAzOjU0OjEzLjMxN1oiLCJicyI6IlRydzg5aTREVEc5MU13VEFickV0Q2RhZ2Z3eGtFT1Q5S01kS3hPb2ZvbG8iLCJzY2QiOiIyMDIyLTA2LTMwVDIwOjM0OjAyLjgxNloifQ&currency=USD&currentCurrency=USD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-us%22%2C%22BSI%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%7D&currentRoute=.%2Fdear-fff&vsi=cd803c96-2931-4d9b-a9fe-8217fc15a86e"
+            title="Dear FFF Letter 3"
+            loading="lazy"
+          ></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           PDF LETTER 4
+           980 x 1275
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>A Letter to FFF</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-4">
+
+          <iframe
+            src="https://wixlabs-pdf-dev.appspot.com/index?pageId=hguya&compId=comp-l57h0ryq&viewerCompId=comp-l57h0ryq&siteRevision=483&viewMode=site&deviceType=desktop&locale=en&tz=America%2FLos_Angeles&regionalLanguage=en&width=980&height=1275&instance=UE6qAU1d9QQWM0YzdKeCj9QYay_uHh1u4Yc0rgAazrs.eyJpbnN0YW5jZUlkIjoiYjkwNTNhMTktNzMyNy00YmVkLTg0ZTUtODVlMGM2MDA5ZTg0IiwiYXBwRGVmSWQiOiIxM2VlMTBhMy1lY2I5LTdlZmYtNDI5OC1kMmY5ZjM0YWNmMGQiLCJtZXRhU2l0ZUlkIjoiY2Q0ZjM0M2UtYzY4Yy00NWUwLWE1NTYtYzhjMjJmNTFjODM4Iiwic2lnbkRhdGUiOiIyMDI2LTA1LTA2VDE5OjQ3OjE3LjM3NVoiLCJ1aWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwiZGVtb01vZGUiOmZhbHNlLCJhaWQiOiI1MmVjZmU4ZC02MzhkLTQxY2UtYWE0Yy0xOThmZDdmMjI3YWQiLCJiaVRva2VuIjoiNzQ0YTBlMjctYjVhYi0wZTBkLTIxYjMtNGQyMmU5NTE1NmJjIiwic2l0ZU93bmVySWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjYtMDUtMDZUMjM6NDc6MTcuMzc1WiIsImhhc1VzZXJSb2xlIjp0cnVlLCJzaWQiOiJiZjQyNTc4OS01M2YxLTRhY2EtYTczMy0yY2FlMDA1OWMwNzkiLCJzY3QiOiIyMDI2LTA1LTA2VDAzOjU0OjEzLjMxN1oiLCJicyI6IlRydzg5aTREVEc5MU13VEFickV0Q2RhZ2Z3eGtFT1Q5S01kS3hPb2ZvbG8iLCJzY2QiOiIyMDIyLTA2LTMwVDIwOjM0OjAyLjgxNloifQ&currency=USD&currentCurrency=USD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-us%22%2C%22BSI%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%7D&currentRoute=.%2Fdear-fff&vsi=cd803c96-2931-4d9b-a9fe-8217fc15a86e"
+            title="Dear FFF Letter 4"
+            loading="lazy"
+          ></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           PDF LETTER 5
+           980 x 1285
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>A Letter to FFF</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-5">
+
+          <iframe
+            src="https://wixlabs-pdf-dev.appspot.com/index?pageId=hguya&compId=comp-l57ha5va&viewerCompId=comp-l57ha5va&siteRevision=483&viewMode=site&deviceType=desktop&locale=en&tz=America%2FLos_Angeles&regionalLanguage=en&width=980&height=1285&instance=UE6qAU1d9QQWM0YzdKeCj9QYay_uHh1u4Yc0rgAazrs.eyJpbnN0YW5jZUlkIjoiYjkwNTNhMTktNzMyNy00YmVkLTg0ZTUtODVlMGM2MDA5ZTg0IiwiYXBwRGVmSWQiOiIxM2VlMTBhMy1lY2I5LTdlZmYtNDI5OC1kMmY5ZjM0YWNmMGQiLCJtZXRhU2l0ZUlkIjoiY2Q0ZjM0M2UtYzY4Yy00NWUwLWE1NTYtYzhjMjJmNTFjODM4Iiwic2lnbkRhdGUiOiIyMDI2LTA1LTA2VDE5OjQ3OjE3LjM3NVoiLCJ1aWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwiZGVtb01vZGUiOmZhbHNlLCJhaWQiOiI1MmVjZmU4ZC02MzhkLTQxY2UtYWE0Yy0xOThmZDdmMjI3YWQiLCJiaVRva2VuIjoiNzQ0YTBlMjctYjVhYi0wZTBkLTIxYjMtNGQyMmU5NTE1NmJjIiwic2l0ZU93bmVySWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjYtMDUtMDZUMjM6NDc6MTcuMzc1WiIsImhhc1VzZXJSb2xlIjp0cnVlLCJzaWQiOiJiZjQyNTc4OS01M2YxLTRhY2EtYTczMy0yY2FlMDA1OWMwNzkiLCJzY3QiOiIyMDI2LTA1LTA2VDAzOjU0OjEzLjMxN1oiLCJicyI6IlRydzg5aTREVEc5MU13VEFickV0Q2RhZ2Z3eGtFT1Q5S01kS3hPb2ZvbG8iLCJzY2QiOiIyMDIyLTA2LTMwVDIwOjM0OjAyLjgxNloifQ&currency=USD&currentCurrency=USD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-us%22%2C%22BSI%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%7D&currentRoute=.%2Fdear-fff&vsi=cd803c96-2931-4d9b-a9fe-8217fc15a86e"
+            title="Dear FFF Letter 5"
+            loading="lazy"
+          ></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           PDF LETTER 6
+           980 x 1278
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="document-label">
+          <span>💌</span>
+          <span>Thank you from a Scarlett Estevez fan</span>
+        </div>
+
+        <div class="pdf-wrapper pdf-6">
+
+          <iframe
+            src="https://wixlabs-pdf-dev.appspot.com/index?pageId=hguya&compId=comp-l57hdjfa&viewerCompId=comp-l57hdjfa&siteRevision=483&viewMode=site&deviceType=desktop&locale=en&tz=America%2FLos_Angeles&regionalLanguage=en&width=980&height=1278&instance=UE6qAU1d9QQWM0YzdKeCj9QYay_uHh1u4Yc0rgAazrs.eyJpbnN0YW5jZUlkIjoiYjkwNTNhMTktNzMyNy00YmVkLTg0ZTUtODVlMGM2MDA5ZTg0IiwiYXBwRGVmSWQiOiIxM2VlMTBhMy1lY2I5LTdlZmYtNDI5OC1kMmY5ZjM0YWNmMGQiLCJtZXRhU2l0ZUlkIjoiY2Q0ZjM0M2UtYzY4Yy00NWUwLWE1NTYtYzhjMjJmNTFjODM4Iiwic2lnbkRhdGUiOiIyMDI2LTA1LTA2VDE5OjQ3OjE3LjM3NVoiLCJ1aWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwiZGVtb01vZGUiOmZhbHNlLCJhaWQiOiI1MmVjZmU4ZC02MzhkLTQxY2UtYWE0Yy0xOThmZDdmMjI3YWQiLCJiaVRva2VuIjoiNzQ0YTBlMjctYjVhYi0wZTBkLTIxYjMtNGQyMmU5NTE1NmJjIiwic2l0ZU93bmVySWQiOiJhN2QwZTMxNS00NzU2LTRjNTYtYmNjYi1iMmIyMWRiNzNhZDAiLCJleHBpcmF0aW9uRGF0ZSI6IjIwMjYtMDUtMDZUMjM6NDc6MTcuMzc1WiIsImhhc1VzZXJSb2xlIjp0cnVlLCJzaWQiOiJiZjQyNTc4OS01M2YxLTRhY2EtYTczMy0yY2FlMDA1OWMwNzkiLCJzY3QiOiIyMDI2LTA1LTA2VDAzOjU0OjEzLjMxN1oiLCJicyI6IlRydzg5aTREVEc5MU13VEFickV0Q2RhZ2Z3eGtFT1Q5S01kS3hPb2ZvbG8iLCJzY2QiOiIyMDIyLTA2LTMwVDIwOjM0OjAyLjgxNloifQ&currency=USD&currentCurrency=USD&commonConfig=%7B%22brand%22%3A%22wix%22%2C%22host%22%3A%22VIEWER%22%2C%22bsi%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%2C%22siteRevision%22%3A%22483%22%2C%22renderingFlow%22%3A%22NONE%22%2C%22language%22%3A%22en%22%2C%22locale%22%3A%22en-us%22%2C%22BSI%22%3A%223f0183f1-a7ab-4cd2-9431-b2b0dcce54fd%7C7%22%7D&currentRoute=.%2Fdear-fff&vsi=cd803c96-2931-4d9b-a9fe-8217fc15a86e"
+            title="Thank you from a Scarlett Estevez fan"
+            loading="lazy"
+          ></iframe>
+
+        </div>
+
+      </article>
+
+
+      <!-- =========================================
+           IMAGE LETTER 7
+      ========================================== -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Message from a Netherlands initiative inspired by FFF
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Message%20from%20a%20Netherlands%20initiative%20inspired%20by%20FFF.avif"
+            alt="Message from a Netherlands initiative inspired by FFF"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 8 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you from Sunrise Childrens Hospital
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20from%20Sunrise%20Childrens%20Hospital.avif"
+            alt="Thank you from Sunrise Childrens Hospital"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 9 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you from John Muir Medical Center
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20from%20John%20Muir%20Medical%20Center.avif"
+            alt="Thank you from John Muir Medical Center"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 10 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Dudly Moore, FFF Caller
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Dudly%20Moore,%20FFF%20Caller.avif"
+            alt="Dudly Moore, FFF Caller"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 11 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you from Cincinnati Childrens Hospital
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20from%20Cincinnati%20Childrens%20Hospital.avif"
+            alt="Thank you from Cincinnati Childrens Hospital"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 12 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you from Childrens Hospital UC Irvine
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20from%20Childrens%20Hospital%20UC%20Irvine.avif"
+            alt="Thank you from Childrens Hospital UC Irvine"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 13 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you to Jonathan Brandis
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20to%20Jonathan%20Brandis.avif"
+            alt="Thank you to Jonathan Brandis"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 14 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you to Paul Reubens (Pee-Wee Herman)
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20to%20Paul%20Reubens%20(Pee-Wee%20Herman).avif"
+            alt="Thank you to Paul Reubens"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+      <!-- IMAGE LETTER 15 -->
+
+      <article class="letter-card">
+
+        <div class="letter-title">
+          Thank you to Winnie the Pooh
+        </div>
+
+        <div class="image-wrapper">
+          <img
+            src="https://raw.githubusercontent.com/jeffjeffmax2/FFF-image-hosting/main/Thank%20you%20to%20Winnie%20the%20Pooh.avif"
+            alt="Thank you to Winnie the Pooh"
+            loading="lazy"
+          >
+        </div>
+
+      </article>
+
+
+    </main>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <h2>
+        Share Your Letter
+      </h2>
+
+      <p>
+        If FFF has touched your life, we would be honored to hear from you.
+      </p>
+
+      <div class="cta-contact">
+
+        <div class="cta-email">
+          famousfonefriends@gmail.com
+        </div>
+
+        <div>
+          (310) 488-1826
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
